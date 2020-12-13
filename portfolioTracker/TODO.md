@@ -1,0 +1,8 @@
+- Authentificatie
+  - Google fixen?
+  - Login page
+  - Register page
+- Models uitdenken
+  - Ik wil meerdere categorieen die eigen categoriene kunnen hebben
+  - Iedere categorie heeft eigen mogelijke uitgaven
+  - Sommige categorien zijn geen echte uitgaves?

@@ -3,13 +3,13 @@
 The purpose of this application is to get an insight on how my finances are.
 
 # TODO
-- Connect to database (SQLite to start with)
 - Authentification
   - backend
     - Use jwt token
   - frontend
     - sign in page
     - register page
+- Connect to database (SQLite to start with)
 - Features
   - Add categories
     - CRUD

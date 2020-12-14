@@ -3,21 +3,38 @@ from typing import Optional
 import pandas as pd
 from fastapi import File, UploadFile
 import csv, re
-from models.transaction import Transaction
-from models.transaction_category import TransactionCategory
+from app.models.transaction import Transaction
+from app.models.transaction_category import TransactionCategory
 
 router = APIRouter()
 
-# @router.get("/")
-# async def getExpensesToAssign() -> str:
-#     return "Jajajajaja"
+
+@router.post("/upload")
+async def upload_transactions_with_excel(file: UploadFile = File(...)) -> TransactionCategory:
+    data = file.file
+    df = pd.read_excel(data)
+    df.fillna('')
+    main_category = TransactionCategory(name = "Main")
+
+    for row in df.iterrows():
+        
+        temp_transaction = Transaction(
+                date = "/".join(row[1][0].split("/")[::-1]),
+                amount = row[1][1],
+                opponent = str(row[1][3]),
+                opponent_account = str(row[1][4]),
+                comment = str(row[1][6]),
+                own_account = str(row[1][7]))
+        print()
+        main_category.add_transaction(temp_transaction)
+    return main_category
 
 
-@router.get("/")
-async def create_upload_file() -> TransactionCategory:
+@router.get("/upload_from_file")
+async def fake_upload_file() -> TransactionCategory:
     #file: UploadFile = File(...) Dit in bovenstaande steken als ik er iets mee wil doen
     # data = file.file
-    df = pd.read_excel('/Users/robbe/Documents/Projects/expenseTracker/assets/searchMovement.xls')
+    df = pd.read_excel('/Users/robbe/Documents/Projects/finance_webapp/assets/searchMovement.xls')
     df.fillna('')
     main_category = TransactionCategory(name = "Main")
     opponents = set()

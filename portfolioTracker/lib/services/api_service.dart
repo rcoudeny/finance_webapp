@@ -14,14 +14,14 @@ class ApiService {
   ApiService._internal();
 
   Future<TransactionCategory> fetchTransactions() async {
-    var response = await http.get(baseApiUrl + "transactions");
+    var response = await http.get(baseApiUrl + "transactions/upload_from_file");
     if (response.statusCode == 200) {
       TransactionCategory ec =
           TransactionCategory.fromJSON(jsonDecode(response.body));
       // print(ec.getTotal());
       return ec;
     } else {
-      throw Exception("Failed to load expenses");
+      throw Exception("Failed to load transactions");
     }
     // var expenseFile = File("../../../assets/searchMovement.xls");
     // var stream =

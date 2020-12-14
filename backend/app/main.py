@@ -1,10 +1,8 @@
 
 from fastapi import FastAPI
-from api.routes.api import router as api_router
-from core.config import PROJECT_NAME, VERSION, API_PREFIX, ALLOWED_HOSTS
+from app.api.routes.api import router as api_router
+from app.core.config import PROJECT_NAME, VERSION, ALLOWED_HOSTS
 from starlette.middleware.cors import CORSMiddleware
-
-
 
 def get_application() -> FastAPI:
     application = FastAPI(title=PROJECT_NAME, # debug=DEBUG, 
@@ -24,7 +22,7 @@ def get_application() -> FastAPI:
     # application.add_exception_handler(HTTPException, http_error_handler)
     # application.add_exception_handler(RequestValidationError, http422_error_handler)
 
-    application.include_router(api_router, prefix=API_PREFIX)
+    application.include_router(api_router)
 
     return application
 

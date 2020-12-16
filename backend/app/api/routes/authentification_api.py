@@ -5,11 +5,11 @@ from app.models.token_model import Token, TokenData
 from app.core.config import ACCESS_TOKEN_EXPIRES_MINUTES
 from jose import JWTError, jwt
 from app.database.repository.user_repository import (
-    get_current_user, 
     authenticate_user, 
     create_access_token, 
     create_user, 
-    get_user_by_email
+    get_user_by_email,
+    get_token
 )
 import app.database.db_models as models
 import app.database.db_schemas as schemas
@@ -38,7 +38,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.post("/register")
+@router.post("/register", response_model=schemas.UserCreate)
 def register(user: schemas.UserCreate, db: Session = Depends(models.get_db)):
     db_user = get_user_by_email(db, email=user.email)
     if db_user:
@@ -46,6 +46,6 @@ def register(user: schemas.UserCreate, db: Session = Depends(models.get_db)):
     return create_user(db=db, user=user)
 
 
-@router.get("/users/me")
-async def read_users_me(db: Session = Depends(models.get_db), current_user = Depends(get_current_user)):
-    return get_current_user()
+@router.get("/users/me", response_description="Get the current user")
+async def read_users_me(token: str = Depends(get_token), db: Session = Depends(models.get_db)):
+    return get_user_by_email(db, token.email)

@@ -4,6 +4,8 @@ from typing import List
 
 from starlette.config import Config
 from starlette.datastructures import CommaSeparatedStrings, Secret
+from passlib.context import CryptContext
+from fastapi.security import OAuth2PasswordBearer
 
 # from databases import DatabaseURL
 # from loguru import logger
@@ -31,6 +33,9 @@ DATABASE_URL = "postgres://finance_web:ditiseensecuurwachtwoordvoormij@localhost
 # MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 
 # SECRET_KEY: Secret = config("SECRET_KEY", cast=Secret)
+PWD_CONTEXT = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+OAUTH2_SCHEME = OAuth2PasswordBearer(tokenUrl="token")
 
 PROJECT_NAME: str = "expense tracker" # config("PROJECT_NAME", default="FastAPI example application")
 ALLOWED_HOSTS: List[str] = config(

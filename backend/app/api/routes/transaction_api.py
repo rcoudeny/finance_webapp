@@ -3,8 +3,8 @@ from typing import Optional
 import pandas as pd
 from fastapi import File, UploadFile
 import csv, re
-from app.models.transaction import Transaction
-from app.models.transaction_category import TransactionCategory
+from app.models.transaction_model import Transaction
+from app.models.transaction_category_model import TransactionCategory
 
 router = APIRouter()
 

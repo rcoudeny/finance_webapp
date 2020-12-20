@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from .db_connection import Base
 from app.database.db_connection import engine, SessionLocal
 
+
 class User(Base):
     __tablename__ = "users"
 
@@ -10,26 +11,8 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     username = Column(String)
     hashed_password = Column(String)
-    main_transaction_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
 
-    main_transaction_category = relationship("TransactionCategory", back_populates="owner")
-    # transactions = relationship("Transaction", back_populates="owner")
-
-# class Transaction(Base):
-#     __tablename__ = "transactions"
-
-#     id = Column(Integer, primary_key=True, index=True)
-#     date = Column(Date)
-#     amount = Column(Float)
-#     opponent = Column(String)
-#     opponent_account = Column(String)
-#     comment = Column(String)
-#     own_account = Column(String)
-
-    # transaction_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
-    # owner = relationship("User", back_populates="transactions")
-
-    # category = relationship("TransactionCategory", back_populates="transactions")
+    transaction_categories = relationship("TransactionCategory", back_populates="owner")
 
 
 class TransactionCategory(Base):
@@ -37,15 +20,37 @@ class TransactionCategory(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
+    parent_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
-    owner = relationship("User", back_populates="main_transaction_category")
-    
+    parent_category = relationship(
+        "TransactionCategory", back_populates="sub_categories"
+    )
+    sub_categories = relationship(
+        "TransactionCategory", remote_side=[parent_category_id]
+    )
 
-#     subcategories = relationship("TransactionCategory", back_populates="maincategorie")
-#     maincategorie = relationship("TransactionCategory", back_populates="subcategories")
-#     transactions = relationship("Transaction", back_populates="category")
-    
+    owner = relationship("User", back_populates="transaction_categories")
+    transactions = relationship("Transaction", back_populates="category")
+
+
+class Transaction(Base):
+    __tablename__ = "transactions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    date = Column(Date)
+    amount = Column(Float)
+    opponent = Column(String)
+    opponent_account = Column(String)
+    comment = Column(String)
+    own_account = Column(String)
+    transaction_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
+
+    category = relationship("TransactionCategory", back_populates="transactions")
+
+
 Base.metadata.create_all(bind=engine)
+
 
 def get_db():
     db = SessionLocal()

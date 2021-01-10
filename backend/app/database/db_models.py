@@ -23,15 +23,19 @@ class TransactionCategory(Base):
     parent_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
+    owner = relationship("User", back_populates="transaction_categories")
     parent_category = relationship(
         "TransactionCategory", back_populates="sub_categories"
     )
     sub_categories = relationship(
-        "TransactionCategory", remote_side=[parent_category_id]
+        "TransactionCategory",
+        remote_side=[parent_category_id],
+        cascade="all, delete-orphan",
     )
 
-    owner = relationship("User", back_populates="transaction_categories")
-    transactions = relationship("Transaction", back_populates="category")
+    transactions = relationship(
+        "Transaction", back_populates="category", cascade="all, delete-orphan"
+    )
 
 
 class Transaction(Base):
@@ -44,7 +48,7 @@ class Transaction(Base):
     opponent_account = Column(String)
     comment = Column(String)
     own_account = Column(String)
-    transaction_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
+    category_id = Column(Integer, ForeignKey("transaction_categories.id"))
 
     category = relationship("TransactionCategory", back_populates="transactions")
 

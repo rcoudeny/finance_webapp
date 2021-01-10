@@ -2,7 +2,7 @@ import uvicorn
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from app.models.user_model import UserBase
+from app.models.user_model import UserBase, UserInDB
 from app.models.token_model import Token, TokenData
 from app.core.config import ACCESS_TOKEN_EXPIRES_MINUTES
 from jose import JWTError, jwt
@@ -58,5 +58,5 @@ def register(user: schemas.UserCreate, db: Session = Depends(models.get_db)):
 @router.get("/users/me", response_description="Get the current user")
 async def read_users_me(
     token: str = Depends(get_token), db: Session = Depends(models.get_db)
-):
+) -> schemas.UserInDB:
     return get_user_by_email(db, token.email)

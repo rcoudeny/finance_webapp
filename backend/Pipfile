@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+pandas = "*"
+uvicorn = "*"
+sqlalchemy = "*"
+passlib = "*"
+python-dev = "*"
+psycopg2-binary = "*"
+python-jose = "*"
+python-multipart = "*"
+bcrypt = "*"
+pydantic = "*"
+starlette = "*"
+
+[dev-packages]
+black = "*"
+
+[requires]
+python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true

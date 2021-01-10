@@ -1,29 +1,25 @@
+from app.models.user_model import UserDTO
 from typing import List, Optional
-from app.models.transaction_model import Transaction
+from app.models.transaction_model import TransactionInDB
 from pydantic import BaseModel
 
 
 class TransactionCategoryBase(BaseModel):
+    name: str
+    owner: Optional[UserDTO]
+
+    # parent_category: Optional[]
+
+
+class SelfRefTransactionCategoryInDB(BaseModel):
     id: int
     name: str
-    parent_category_id: int
+    # owner: Optional[UserDTO]
+    sub_categories: Optional[List["SelfRefTransactionCategoryInDB"]]
+    transactions: Optional[List[TransactionInDB]]
 
-    # def get_all_transactions(self):
-    #     total = 0
-    #     for subcategory in self.subcategories:
-    #         total += subcategory.getAllTransactions()
-    #     for transaction in self.transactions:
-    #         total += transaction.getAmount()
-    #     return round(total,2)
+    class Config:
+        orm_mode = True
 
-    # def add_transaction(self, transaction):
-    #     self.transactions.append(transaction)
 
-    # def add_subcategory(self, category):
-    #     self.subcategories.append(category)
-
-    # def find_subcategory_with_name(self, name: str):
-    #     for cat in self.subcategories:
-    #         if (cat.name == name):
-    #             return cat
-    #     return None
+SelfRefTransactionCategoryInDB.update_forward_refs()

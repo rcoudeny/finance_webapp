@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:portfolioTracker/models/transaction_category_model.dart';
+import 'package:portfolioTracker/models/category_model.dart';
 
 import '../constants.dart';
 
@@ -13,16 +13,18 @@ class ApiService {
   }
   ApiService._internal();
 
-  Future<TransactionCategory> fetchTransactions() async {
-    var response = await http.get(baseApiUrl + "transactions/upload_from_file");
-    if (response.statusCode == 200) {
-      TransactionCategory ec =
-          TransactionCategory.fromJSON(jsonDecode(response.body));
-      // print(ec.getTotal());
-      return ec;
-    } else {
-      throw Exception("Failed to load transactions");
-    }
+  // /api/upload_from_file
+  Future<Category> fetchTransactions() async {
+    return null;
+    //   var response = await http.get(baseApiUrl + "transactions/upload_from_file");
+    //   if (response.statusCode == 200) {
+    //     TransactionCategory ec =
+    //         TransactionCategory.fromJSON(jsonDecode(response.body));
+    //     // print(ec.getTotal());
+    //     return ec;
+    //   } else {
+    //     throw Exception("Failed to load transactions");
+    //   }
     // var expenseFile = File("../../../assets/searchMovement.xls");
     // var stream =
     //     new http.ByteStream(DelegatingStream.typed(expenseFile.openRead()));

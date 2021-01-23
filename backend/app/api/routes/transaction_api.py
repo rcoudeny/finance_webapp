@@ -4,7 +4,7 @@ import pandas as pd
 from fastapi import File, UploadFile
 import csv, re
 from app.models.transaction_model import TransactionBase
-from app.models.transaction_category_model import TransactionCategoryBase
+from app.models.category_model import CategoryBase
 
 router = APIRouter()
 
@@ -12,11 +12,11 @@ router = APIRouter()
 # @router.post("/upload")
 # async def upload_transactions_with_excel(
 #     file: UploadFile = File(...),
-# ) -> TransactionCategoryBase:
+# ) -> CategoryBase:
 #     data = file.file
 #     df = pd.read_excel(data)
 #     df.fillna("")
-#     main_category = TransactionCategoryBase(name="Main")
+#     main_category = CategoryBase(name="Main")
 
 #     for row in df.iterrows():
 
@@ -34,14 +34,14 @@ router = APIRouter()
 
 
 # @router.get("/upload_from_file")
-# async def fake_upload_file() -> TransactionCategoryBase:
+# async def fake_upload_file() -> CategoryBase:
 #     # file: UploadFile = File(...) Dit in bovenstaande steken als ik er iets mee wil doen
 #     # data = file.file
 #     df = pd.read_excel(
 #         "/Users/robbe/Documents/Projects/finance_webapp/assets/searchMovement.xls"
 #     )
 #     df.fillna("")
-#     main_category = TransactionCategoryBase(name="Main")
+#     main_category = CategoryBase(name="Main")
 #     opponents = set()
 
 #     for row in df.iterrows():
@@ -59,7 +59,7 @@ router = APIRouter()
 #             ).add_transaction(temp_transaction)
 #         else:
 #             opponents.add(temp_transaction.opponent)
-#             new_category = TransactionCategoryBase(name=temp_transaction.opponent)
+#             new_category = CategoryBase(name=temp_transaction.opponent)
 #             main_category.add_subcategory(new_category)
 #             new_category.add_transaction(temp_transaction)
 

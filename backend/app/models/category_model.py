@@ -4,22 +4,22 @@ from app.models.transaction_model import TransactionInDB
 from pydantic import BaseModel
 
 
-class TransactionCategoryBase(BaseModel):
+class CategoryBase(BaseModel):
     name: str
     owner: Optional[UserDTO]
 
     # parent_category: Optional[]
 
 
-class SelfRefTransactionCategoryInDB(BaseModel):
+class SelfRefCategoryInDB(BaseModel):
     id: int
     name: str
     # owner: Optional[UserDTO]
-    sub_categories: Optional[List["SelfRefTransactionCategoryInDB"]]
+    sub_categories: Optional[List["SelfRefCategoryInDB"]]
     transactions: Optional[List[TransactionInDB]]
 
     class Config:
         orm_mode = True
 
 
-SelfRefTransactionCategoryInDB.update_forward_refs()
+SelfRefCategoryInDB.update_forward_refs()

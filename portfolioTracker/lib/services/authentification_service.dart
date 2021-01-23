@@ -1,13 +1,11 @@
 class AuthentificationService {
   AuthentificationService();
 
-  Future<String> signInWithEmailAndPassword(
-      {String email, String password}) async {
+  Future<String> signIn({String email, String password}) async {
     return null;
   }
 
-  Future<String> signUpWithEmailAndPassword(
-      {String email, String password}) async {
+  Future<String> register({String email, String password}) async {
     return null;
   }
 }

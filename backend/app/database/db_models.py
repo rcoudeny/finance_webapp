@@ -12,23 +12,23 @@ class User(Base):
     username = Column(String)
     hashed_password = Column(String)
 
-    transaction_categories = relationship("TransactionCategory", back_populates="owner")
+    categories = relationship("Category", back_populates="owner")
 
 
-class TransactionCategory(Base):
-    __tablename__ = "transaction_categories"
+class Category(Base):
+    __tablename__ = "categories"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
-    parent_category_id = Column(Integer, ForeignKey("transaction_categories.id"))
+    parent_category_id = Column(Integer, ForeignKey("categories.id"))
     owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
-    owner = relationship("User", back_populates="transaction_categories")
+    owner = relationship("User", back_populates="categories")
     parent_category = relationship(
-        "TransactionCategory", back_populates="sub_categories"
+        "Category", back_populates="sub_categories"
     )
     sub_categories = relationship(
-        "TransactionCategory",
+        "Category",
         remote_side=[parent_category_id],
         cascade="all, delete-orphan",
     )
@@ -48,9 +48,9 @@ class Transaction(Base):
     opponent_account = Column(String)
     comment = Column(String)
     own_account = Column(String)
-    category_id = Column(Integer, ForeignKey("transaction_categories.id"))
+    category_id = Column(Integer, ForeignKey("categories.id"))
 
-    category = relationship("TransactionCategory", back_populates="transactions")
+    category = relationship("Category", back_populates="transactions")
 
 
 Base.metadata.create_all(bind=engine)

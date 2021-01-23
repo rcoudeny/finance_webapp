@@ -26,12 +26,12 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 
 def create_user(db: Session, user: schemas.UserCreate):
     hashed_password = hash_password(user.password)
-    db_transaction_category = models.TransactionCategory(name="main")
+    db_category = models.Category(name="main")
     db_user = models.User(
         email=user.email,
         username=user.username,
         hashed_password=hashed_password,
-        transaction_categories=[db_transaction_category],
+        categories=[db_category],
     )
     db.add(db_user)
     db.commit()

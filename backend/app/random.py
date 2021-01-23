@@ -30,9 +30,6 @@
 #         break
 
 
-
-
-
 # print(str(months/12) + " With a monthly rev at the end of " + str(format(monthly_rev,".2f")))
 # print()
 # print("Totale inbreng:\t" + format(amount*months,".2f"))
@@ -44,28 +41,28 @@
 import pandas as pd
 
 df = pd.read_excel(
-        "/Users/robbe/Documents/Projects/finance_webapp/assets/searchMovement.xls"
-    )
+    "/Users/robbe/Documents/Projects/finance_webapp/assets/searchMovement.xls"
+)
 df.fillna("")
-   # main_category = TransactionCategoryBase(name="Main")
+# main_category = CategoryBase(name="Main")
 opponents = set()
 
 for row in df.iterrows():
     print(row)
-        # temp_transaction = Transaction(
-        #     date="/".join(row[1][0].split("/")[::-1]),
-        #     amount=row[1][1],
-        #     opponent=str(row[1][3]),
-        #     opponent_account=str(row[1][4]),
-        #     comment=str(row[1][6]),
-        #     own_account=str(row[1][7]),
-        # )
-        # if temp_transaction.opponent in opponents:
-        #     main_category.find_subcategory_with_name(
-        #         temp_transaction.opponent
-        #     ).add_transaction(temp_transaction)
-        # else:
-        #     opponents.add(temp_transaction.opponent)
-        #     new_category = TransactionCategoryBase(name=temp_transaction.opponent)
-        #     main_category.add_subcategory(new_category)
-        #     new_category.add_transaction(temp_transaction)
+    # temp_transaction = Transaction(
+    #     date="/".join(row[1][0].split("/")[::-1]),
+    #     amount=row[1][1],
+    #     opponent=str(row[1][3]),
+    #     opponent_account=str(row[1][4]),
+    #     comment=str(row[1][6]),
+    #     own_account=str(row[1][7]),
+    # )
+    # if temp_transaction.opponent in opponents:
+    #     main_category.find_subcategory_with_name(
+    #         temp_transaction.opponent
+    #     ).add_transaction(temp_transaction)
+    # else:
+    #     opponents.add(temp_transaction.opponent)
+    #     new_category = CategoryBase(name=temp_transaction.opponent)
+    #     main_category.add_subcategory(new_category)
+    #     new_category.add_transaction(temp_transaction)

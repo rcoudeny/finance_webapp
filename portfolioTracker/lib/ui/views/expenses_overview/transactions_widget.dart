@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolioTracker/models/transaction_model.dart';
-import 'package:portfolioTracker/models/transaction_category_model.dart';
+import 'package:portfolioTracker/models/category_model.dart';
 
 class ExpensesWidget extends StatelessWidget {
-  TransactionCategory expenseCategory;
+  Category expenseCategory;
   ExpensesWidget({this.expenseCategory});
 
   @override

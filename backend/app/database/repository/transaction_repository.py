@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 import app.database.db_models as models
 import app.database.db_schemas as schemas
-from app.database.repository.transaction_category_repository import (
-    get_main_transaction_category_from_user_with_email,
-    get_transaction_category_with_id,
+from app.database.repository.category_repository import (
+    get_main_category_from_user_with_email,
+    get_category_with_id,
 )
 
 
@@ -12,9 +12,9 @@ def add_transaction(
 ) -> int:
     category = transaction.category_id
     if category == 0:
-        category = get_main_transaction_category_from_user_with_email(db, user_mail)
+        category = get_main_category_from_user_with_email(db, user_mail)
     else:
-        category = get_transaction_category_with_id(db, 1, category)
+        category = get_category_with_id(db, 1, category)
     db_transaction = models.Transaction(
         date=transaction.date,
         amount=transaction.amount,

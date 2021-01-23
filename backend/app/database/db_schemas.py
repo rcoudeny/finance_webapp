@@ -1,5 +1,5 @@
 from app.models.user_model import UserBase, UserDTO, UserInDB
-from app.models.transaction_category_model import SelfRefTransactionCategoryInDB
+from app.models.category_model import SelfRefCategoryInDB
 from app.models.transaction_model import TransactionBase, TransactionInDB
 
 
@@ -15,7 +15,7 @@ class UserTest(UserDTO):
     pass
 
 
-class SelfRefTransactionCategoryInDB(SelfRefTransactionCategoryInDB):
+class SelfRefCategoryInDB(SelfRefCategoryInDB):
     pass
 
 

@@ -1,7 +1,7 @@
 from app.models.transaction_model import TransactionInDB
 from operator import mod
 from fastapi import APIRouter, Depends, HTTPException, status
-import app.database.repository.transaction_category_repository as category_repo
+import app.database.repository.category_repository as category_repo
 import app.database.repository.transaction_repository as transaction_repo
 import app.database.db_models as models
 import app.database.db_schemas as schemas
@@ -12,11 +12,11 @@ from app.database.repository.user_repository import get_token
 router = APIRouter()
 
 
-@router.get("/", response_model=schemas.SelfRefTransactionCategoryInDB)
-async def get_main_transaction_category(
+@router.get("/", response_model=schemas.SelfRefCategoryInDB)
+async def get_main_category(
     token: str = Depends(get_token), db: Session = Depends(models.get_db)
 ):
-    test = category_repo.get_main_transaction_category_from_user_with_email(
+    test = category_repo.get_main_category_from_user_with_email(
         db, token.email
     )
     return test
@@ -67,11 +67,11 @@ transaction_router = APIRouter()
 
 
 @transaction_router.get("/", response_model=int)
-async def get_main_transaction_category(
+async def get_main_category(
     token: str = Depends(get_token), db: Session = Depends(models.get_db)
 ):
 
-    return category_repo.get_main_transaction_category_from_user_with_email(
+    return category_repo.get_main_category_from_user_with_email(
         db, token.email
     ).id
 

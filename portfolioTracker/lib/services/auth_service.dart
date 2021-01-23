@@ -52,10 +52,11 @@ class AuthService {
   StreamController<User> userController = StreamController<User>();
 
   Future<User> get checkCurrentUser async {
+    // TODO: Over dio gebruiken voor de http calls?
     final response = await http.get('$baseApiUrl/authentification/currentuser',
         headers: headers);
     if (response.statusCode == 200) {
-      User user = User.fromJSON(jsonDecode(response.body)['user']);
+      User user = User.fromJSON(jsonDecode(response.body));
       return user;
     } else {
       return null;
@@ -117,15 +118,15 @@ class AuthService {
     throw (jsonDecode(response.body)['errors']['Error']);
   }
 
-  setJwtToken(User user) {
+  setJwtToken(User user, [String token]) {
     if (user == null) {
       jwtToken = '';
       setUser(null);
       window.localStorage["jwttoken"] = "";
     } else {
-      jwtToken = user.token;
+      jwtToken = token ?? user.token;
       setUser(user);
-      window.localStorage["jwttoken"] = user.token;
+      window.localStorage["jwttoken"] = jwtToken;
     }
   }
 

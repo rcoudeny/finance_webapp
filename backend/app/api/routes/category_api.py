@@ -1,3 +1,4 @@
+from app.models.category_model import SelfRefCategoryInDB
 from app.models.transaction_model import TransactionInDB
 from operator import mod
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -15,11 +16,8 @@ router = APIRouter()
 @router.get("/", response_model=schemas.SelfRefCategoryInDB)
 async def get_main_category(
     token: str = Depends(get_token), db: Session = Depends(models.get_db)
-):
-    test = category_repo.get_main_category_from_user_with_email(
-        db, token.email
-    )
-    return test
+) -> schemas.SelfRefCategoryInDB:
+    return category_repo.get_main_category_from_user_with_email(db, token.email)
 
 
 @router.post("/add-category", response_model=int)
@@ -28,7 +26,7 @@ async def add_subcategory_to_parent(
     name: str,
     token: str = Depends(get_token),
     db: Session = Depends(models.get_db),
-):
+) -> int:
     response: int = category_repo.add_subcategory_to_parent(
         db, token.email, parent_id, name
     )
@@ -71,9 +69,7 @@ async def get_main_category(
     token: str = Depends(get_token), db: Session = Depends(models.get_db)
 ):
 
-    return category_repo.get_main_category_from_user_with_email(
-        db, token.email
-    ).id
+    return category_repo.get_main_category_from_user_with_email(db, token.email).id
 
 
 @transaction_router.post("/add", response_model=int)

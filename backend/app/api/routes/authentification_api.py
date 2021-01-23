@@ -64,4 +64,4 @@ async def read_users_me(
     token: str = Depends(get_token), db: Session = Depends(models.get_db)
 ) -> AuthorizedUser:
     user: models.User = get_user_by_email(db, token.email)
-    return AuthorizedUser(username=user.username, email=user.email, token=token)
+    return AuthorizedUser(username=user.username, email=user.email)

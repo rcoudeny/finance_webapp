@@ -5,6 +5,7 @@ class User {
   User({this.username, this.email, this.token});
 
   factory User.fromJSON(Map<String, dynamic> json) {
+    print(json);
     return User(
       username: json['username'],
       email: json['email'],

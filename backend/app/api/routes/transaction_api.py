@@ -8,6 +8,7 @@ from app.models.category_model import CategoryBase
 
 router = APIRouter()
 
+# TODO: Dit wordt niet gebruikt omdat de transactions in category zitten
 # TODO: Data initaliseren met excel bestandje (Doen via flutter?)
 # @router.post("/upload")
 # async def upload_transactions_with_excel(

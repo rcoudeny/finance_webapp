@@ -23,4 +23,4 @@ class UserInDB(UserDTO):
 
 
 class AuthorizedUser(UserBase):
-    token: str
+    token: Optional[str]

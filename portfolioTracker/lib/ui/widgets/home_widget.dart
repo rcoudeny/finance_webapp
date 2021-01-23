@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolioTracker/services/api_service.dart';
 import 'package:portfolioTracker/ui/base_widget.dart';
-import 'package:portfolioTracker/ui/views/expenses_overview/transaction_widget.dart';
 
-class HomeView extends StatelessWidget {
+class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget(builder: (context, sizingInformation) {
@@ -20,9 +19,10 @@ class HomeView extends StatelessWidget {
                       if (snapshot.hasError) {
                         return Text('Error: ${snapshot.error}');
                       } else {
-                        return ExpensesWidget(
-                          expenseCategory: snapshot.data,
-                        );
+                        Text("Ingelod");
+                        // return ExpensesWidget(
+                        //   expenseCategory: snapshot.data,
+                        // );
                       }
                   }
                 })),

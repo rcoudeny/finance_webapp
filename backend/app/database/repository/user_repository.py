@@ -16,7 +16,7 @@ def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
 
-def get_user_by_email(db: Session, email: str):
+def get_user_by_email(db: Session, email: str) -> models.User:
     return db.query(models.User).filter(models.User.email == email).first()
 
 
@@ -47,7 +47,7 @@ def hash_password(plain_password) -> str:
     return PWD_CONTEXT.hash(plain_password)
 
 
-def authenticate_user(db: Session, username: str, password: str):
+def authenticate_user(db: Session, username: str, password: str) -> models.User:
     user = get_user_by_email(db, username)
     if not user:
         return False

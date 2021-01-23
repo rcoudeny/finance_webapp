@@ -20,3 +20,7 @@ class UserInDB(UserDTO):
 
     class Config:
         orm_mode = True
+
+
+class AuthorizedUser(UserBase):
+    token: str

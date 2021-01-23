@@ -1,33 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:portfolioTracker/services/authentification_service.dart';
-import 'package:portfolioTracker/ui/views/home_view.dart';
-import 'package:portfolioTracker/ui/views/sign_in_view.dart';
+import 'package:portfolioTracker/models/user_model.dart';
+import 'package:portfolioTracker/services/auth_service.dart';
+import 'package:portfolioTracker/ui/widgets/authorization/sign_in_widget.dart';
+import 'package:portfolioTracker/ui/widgets/home_widget.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  runApp(MyApp());
+  runApp(FinanceApp());
 }
 
-class MyApp extends StatelessWidget {
+class FinanceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: AuthentificationWrapper(),
-    );
+    return StreamProvider<User>.value(
+        value: AuthService.instance.userStream,
+        child: MaterialApp(
+          title: 'Finance application',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.teal,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: AuthentificationWrapper(),
+        ));
   }
 }
 
 class AuthentificationWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (null == null) {
-      return HomeView();
-    }
-    return SignInView();
+    final user = Provider.of<User>(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+        toolbarHeight: 80,
+      ),
+      body: user != null ? HomeWidget() : SignInWidget(),
+    );
   }
 }

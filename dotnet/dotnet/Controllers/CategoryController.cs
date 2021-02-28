@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnet.Data.Repositories.Interfaces;
 using dotnet.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -15,9 +17,9 @@ namespace dotnet.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoryController : ControllerBase
     {
-
         private readonly ICategoryRepository categoryRepository;
 
         public CategoryController(ICategoryRepository context)

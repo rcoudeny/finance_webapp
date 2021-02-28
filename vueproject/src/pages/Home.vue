@@ -1,5 +1,5 @@
 <template>
-<h1>{{ count }}</h1>
+<h1>Home</h1>
   <div class="wrapper">
     The reasoning behind how this web application is built, is descended from
     the book 'Rich dad, poor dad'. There, everything is either an asset or a
@@ -10,18 +10,7 @@
 
 </template>
 <script>
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
 export default {
-  setup(){
-    const store = useStore();
-
-    const count = computed(() => store.state.count);
-    return {
-      count
-    }
-  }
 };
 </script>
 <style scoped>

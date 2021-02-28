@@ -1,31 +1,35 @@
 ﻿<Properties StartupConfiguration="{91EAD203-46CB-4EB4-9B15-3EF3D53ABE2F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="dotnet/Data/Repositories/TransactionRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dotnet/Data/Configurations/DbInitializer.cs">
     <Files>
-      <File FileName="dotnet/Data/Repositories/CategoryRepository.cs" Line="40" Column="1" />
-      <File FileName="dotnet/Controllers/TransactionController.cs" />
-      <File FileName="dotnet/Data/Configurations/TransactionConfiguration.cs" />
-      <File FileName="dotnet/Data/Configurations/CategoryConfiguration.cs" />
-      <File FileName="dotnet/Data/Repositories/TransactionRepository.cs" Line="19" Column="10" />
-      <File FileName="dotnet/Models/Category.cs" Line="22" Column="1" NotebookId="1" />
-      <File FileName="dotnet/Models/Transaction.cs" NotebookId="1" />
-      <File FileName="dotnet/Startup.cs" NotebookId="1" />
-      <File FileName="dotnet/Data/DbContext.cs" NotebookId="1" />
-      <File FileName="dotnet/Controllers/CategoryController.cs" NotebookId="1" />
+      <File FileName="dotnet/Configuration/JwtConfig.cs" Line="7" Column="1" />
+      <File FileName="dotnet/appsettings.json" Line="3" Column="23" />
+      <File FileName="dotnet/Startup.cs" Line="108" Column="41" />
+      <File FileName="dotnet/Data/DbContext.cs" Line="15" Column="1" />
+      <File FileName="dotnet/Data/Configurations/DbInitializer.cs" Line="18" Column="21" />
+      <File FileName="dotnet/Configuration/AuthResult.cs" Line="11" Column="1" />
+      <File FileName="dotnet/Models/DTOs/Requests/UserRegistrationDTO.cs" Line="15" Column="1" />
+      <File FileName="dotnet/Controllers/AuthManagementController.cs" Line="100" Column="36" />
+      <File FileName="dotnet/Controllers/CategoryController.cs" Line="30" Column="18" />
+      <File FileName="dotnet/Models/DTOs/Requests/UserLoginDTO.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="dotnet" expanded="True">
             <Node name="dotnet" expanded="True">
+              <Node name="Configuration" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True">
-                <Node name="Configurations" expanded="True" />
-                <Node name="Repositories" expanded="True">
-                  <Node name="Interfaces" expanded="True" />
-                  <Node name="TransactionRepository.cs" selected="True" />
+                <Node name="Configurations" expanded="True">
+                  <Node name="DbInitializer.cs" selected="True" />
                 </Node>
               </Node>
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="DTOs" expanded="True">
+                  <Node name="Requests" expanded="True" />
+                  <Node name="Responses" expanded="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
@@ -36,7 +40,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/robbe/Projects/finance_webapp/dotnet/dotnet/Controllers/CategoryController.cs" relfile="dotnet/Controllers/CategoryController.cs" line="33" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

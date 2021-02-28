@@ -1,7 +1,7 @@
 <template>
-  <div v-if="category" class="wrapper">
-    <div>{{ category.name }}</div>
-    <div v-for="(transaction, index) in category.transactions" :key="index">
+  <div v-if="mainCategory" class="wrapper">
+    <div>{{ mainCategory.name }}</div>
+    <div v-for="(transaction, index) in mainCategory.transactions" :key="index">
       <Transaction :transaction="transaction"></Transaction>
     </div>
   </div>
@@ -9,21 +9,22 @@
 </template>
 <script>
 import Transaction from "@/pages/transactionspage/components/Transaction";
+import { SET_MAIN_CATEGORY } from '../../store/actions.type';
 import { useStore } from 'vuex';
-import { computed } from 'vue';
 
 export default {
   components: {
     Transaction,
   },
-  setup(){
-    const store = useStore();
-    const category = computed(() => store.state.mainCategory);
-    if(!store.state.mainCategory.name){
-      store.commit("setMainCategory");
+  computed: {
+    mainCategory () {
+      return this.$store.getters.mainCategory;
     }
-    return {
-      category
+  },
+  setup(){
+    var store = useStore();
+    if(!store.state.mainCategory){
+      store.dispatch(SET_MAIN_CATEGORY);
     }
   },
 };

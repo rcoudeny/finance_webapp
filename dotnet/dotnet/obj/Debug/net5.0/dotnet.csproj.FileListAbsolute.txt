@@ -59,3 +59,14 @@
 /Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/runtimes/win-x86/native/e_sqlite3.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/dotnet.StaticWebAssets.xml
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.AspNetCore.Identity.UI.Views.V4.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.AspNetCore.Identity.UI.dll
+/Users/robbe/Projects/finance_webapp/dotnet/dotnet/bin/Debug/net5.0/Microsoft.Extensions.FileProviders.Embedded.dll

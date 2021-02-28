@@ -1,5 +1,4 @@
 <template>
-<button v-on:click="increment">optellen</button>
   <div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl eros,
     pulvinar facilisis justo mollis, auctor consequat urna. Morbi a bibendum
@@ -152,20 +151,7 @@
   <br />
 </template>
 <script>
-import { useStore } from 'vuex';
-
-import router from '../route/index';
 export default {
-  setup() {
-    const store = useStore();
-    
-    function increment(){
-      store.commit("increment");
-      router.push({ name: "Home" });
-    }
-
-    return{increment}
-  }
 };
 </script>
 <style>

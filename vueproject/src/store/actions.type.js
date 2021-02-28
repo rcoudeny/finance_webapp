@@ -1,1 +1,8 @@
-export const FETCH_MAIN_CATEGORY = "fetchMainCategory";
+/// Authorization ///
+export const LOGIN = "login";
+export const LOGOUT = "logout";
+export const REGISTER = "register";
+export const CHECK_AUTH = "checkAuth";
+
+/// Categories ///
+export const SET_MAIN_CATEGORY = "setMainCategory";

@@ -1,5 +1,12 @@
 # vueproject
 
+# TODO
+- Register backend
+- Login backend
+- Register frontend
+- Login frontend
+- 
+
 ## Project setup
 ```
 npm install

@@ -68,6 +68,8 @@ namespace dotnet
 
             app.UseRouting();
 
+            app.UseCors("Cors");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

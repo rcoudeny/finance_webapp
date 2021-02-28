@@ -1,25 +1,44 @@
 <template>
-  <TransactionOverview />
+  <div id="appContent">
+    <div>
+      <Navigation></Navigation>
+      <router-view />
+    </div>
+    <Footer></Footer>
+  </div>
 </template>
 
 <script>
-import TransactionOverview from "./pages/transactionoverview/TransactionOverview.vue";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 export default {
   name: "App",
   components: {
-    TransactionOverview,
+    Navigation,
+    Footer,
   },
 };
 </script>
 
 <style>
+@import "./assets/globalVariables.css";
+
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  margin: 0;
+  font-size: 20px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+#appContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+footer {
+  flex-shrink: 0;
 }
 </style>

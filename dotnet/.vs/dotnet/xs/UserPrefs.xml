@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{91EAD203-46CB-4EB4-9B15-3EF3D53ABE2F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="dotnet/Data/Repositories/CategoryRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dotnet/Data/Repositories/TransactionRepository.cs">
     <Files>
-      <File FileName="dotnet/Data/Repositories/CategoryRepository.cs" Line="38" Column="81" />
-      <File FileName="dotnet/Controllers/TransactionController.cs" Line="22" Column="51" />
-      <File FileName="dotnet/Data/Configurations/TransactionConfiguration.cs" Line="13" Column="39" />
-      <File FileName="dotnet/Data/Configurations/CategoryConfiguration.cs" Line="16" Column="6" />
+      <File FileName="dotnet/Data/Repositories/CategoryRepository.cs" Line="40" Column="1" />
+      <File FileName="dotnet/Controllers/TransactionController.cs" />
+      <File FileName="dotnet/Data/Configurations/TransactionConfiguration.cs" />
+      <File FileName="dotnet/Data/Configurations/CategoryConfiguration.cs" />
+      <File FileName="dotnet/Data/Repositories/TransactionRepository.cs" Line="19" Column="10" />
       <File FileName="dotnet/Models/Category.cs" Line="22" Column="1" NotebookId="1" />
-      <File FileName="dotnet/Models/Transaction.cs" Line="17" Column="47" NotebookId="1" />
-      <File FileName="dotnet/Startup.cs" Line="78" Column="49" NotebookId="1" />
-      <File FileName="dotnet/Data/DbContext.cs" Line="15" Column="1" NotebookId="1" />
-      <File FileName="dotnet/Controllers/CategoryController.cs" Line="29" Column="27" NotebookId="1" />
+      <File FileName="dotnet/Models/Transaction.cs" NotebookId="1" />
+      <File FileName="dotnet/Startup.cs" NotebookId="1" />
+      <File FileName="dotnet/Data/DbContext.cs" NotebookId="1" />
+      <File FileName="dotnet/Controllers/CategoryController.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,7 +22,7 @@
                 <Node name="Configurations" expanded="True" />
                 <Node name="Repositories" expanded="True">
                   <Node name="Interfaces" expanded="True" />
-                  <Node name="CategoryRepository.cs" selected="True" />
+                  <Node name="TransactionRepository.cs" selected="True" />
                 </Node>
               </Node>
               <Node name="Models" expanded="True" />

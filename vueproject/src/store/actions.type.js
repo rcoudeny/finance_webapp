@@ -1,0 +1,1 @@
+export const FETCH_MAIN_CATEGORY = "fetchMainCategory";
